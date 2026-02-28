@@ -28,4 +28,6 @@ jobs:
           context: .
           file: nodejs-pnpm/22-10/Dockerfile
           push: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: nodejs-pnpm:22-10-pr-${{ github.sha }}
