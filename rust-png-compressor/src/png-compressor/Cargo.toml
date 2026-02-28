@@ -1,0 +1,9 @@
+[package]
+name = "png-compressor"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+image = "0.25.9"
+oxipng = "10.1.0"
+anyhow = "1.0.102"
