@@ -28,4 +28,6 @@ jobs:
           context: .
           file: mold-builder/Dockerfile
           push: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: mold-builder:pr-${{ github.sha }}

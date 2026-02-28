@@ -30,6 +30,9 @@ The GitHub Actions setup used for `mold-builder` is the standard for all image d
 
 - Each Docker image directory must have a corresponding workflow in `.github/workflows/`.
 - Each workflow must publish its image to GHCR.
+- Docker build steps in all workflows must use GitHub Actions cache with per-layer mode enabled:
+  - `cache-from: type=gha`
+  - `cache-to: type=gha,mode=max`
 - Triggers must be limited to pushes on `main` and path changes to:
   - that image's `Dockerfile`
   - the workflow file itself
