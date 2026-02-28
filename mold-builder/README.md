@@ -1,6 +1,6 @@
 # mold-builder
 
-`mold-builder` is a Rocky Linux 10-based build image that installs:
+`ghcr.io/mwognicki/mold-builder` is a Rocky Linux 10-based build image that installs:
 
 - `mold` (built from `rui314/mold` stable branch)
 - LLVM/Clang toolchain
@@ -14,13 +14,13 @@ The image configures Cargo to use `clang` as the linker and enables `mold` via `
 From the repository root:
 
 ```bash
-docker build -f mold-builder/Dockerfile -t mold-builder .
+docker build -f mold-builder/Dockerfile -t ghcr.io/mwognicki/mold-builder:latest .
 ```
 
 ## Verify
 
 ```bash
-docker run --rm mold-builder /bin/sh -lc "mold --version && rustc --version && clang --version"
+docker run --rm ghcr.io/mwognicki/mold-builder:latest /bin/sh -lc "mold --version && rustc --version && clang --version"
 ```
 
 ## Usage Example
@@ -28,7 +28,7 @@ docker run --rm mold-builder /bin/sh -lc "mold --version && rustc --version && c
 Use the image as a base for Rust projects that benefit from faster link times:
 
 ```Dockerfile
-FROM mold-builder
+FROM ghcr.io/mwognicki/mold-builder:latest
 WORKDIR /workspace
 COPY . .
 RUN cargo build --release

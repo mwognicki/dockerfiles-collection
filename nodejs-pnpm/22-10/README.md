@@ -1,6 +1,6 @@
 # nodejs-pnpm/22-10
 
-Rocky Linux 10 image with Node.js 22 and `pnpm` preinstalled.
+`ghcr.io/mwognicki/nodejs-pnpm:22-10` is a Rocky Linux 10 image with Node.js 22 and `pnpm` preinstalled.
 
 This image is intended for Node.js workspaces that use `pnpm` and need a simple, reproducible base for CI or local builds.
 
@@ -9,13 +9,13 @@ This image is intended for Node.js workspaces that use `pnpm` and need a simple,
 From the repository root:
 
 ```bash
-docker build -f nodejs-pnpm/22-10/Dockerfile -t nodejs-pnpm:22-10 .
+docker build -f nodejs-pnpm/22-10/Dockerfile -t ghcr.io/mwognicki/nodejs-pnpm:22-10 .
 ```
 
 ## Verify
 
 ```bash
-docker run --rm nodejs-pnpm:22-10 /bin/sh -lc "node --version && npm --version && pnpm --version"
+docker run --rm ghcr.io/mwognicki/nodejs-pnpm:22-10 /bin/sh -lc "node --version && npm --version && pnpm --version"
 ```
 
 ## Notes

@@ -8,6 +8,7 @@ This repository is a small collection of Docker build definitions.
 - `LICENSE`: Project license text.
 
 When adding new images, use one directory per image (for example, `node-builder/`) and keep each Dockerfile self-contained. Each image directory must include a `README.md` next to its `Dockerfile` describing the image, purpose, and usage.
+Each nested image `README.md` must explicitly reference the full GHCR image name (for example, `ghcr.io/mwognicki/nodejs-pnpm:22-10`), not only a local shorthand tag.
 
 Example:
 

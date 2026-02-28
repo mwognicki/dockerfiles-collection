@@ -1,0 +1,31 @@
+name: Validate mold-builder Dockerfile
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - mold-builder/Dockerfile
+      - .github/workflows/mold-builder-pr-build.yml
+
+jobs:
+  build-only:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: mold-builder/Dockerfile
+          push: false
+          tags: mold-builder:pr-${{ github.sha }}
