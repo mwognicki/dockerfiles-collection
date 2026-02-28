@@ -1,5 +1,12 @@
 FROM rockylinux/rockylinux:10-minimal AS rust-builder
 
+LABEL org.opencontainers.image.authors="Marek Kapusta-Ognicki <marek@ognicki.ooo>" \
+      org.opencontainers.image.vendor="Marek Kapusta-Ognicki" \
+      org.opencontainers.image.title="ghcr.io/mwognicki/mold-builder" \
+      org.opencontainers.image.description="Rust/C++ builder image with mold and clang configured for faster linking." \
+      org.opencontainers.image.url="https://ognicki.ooo" \
+      org.opencontainers.image.documentation="https://ognicki.ooo"
+
 RUN microdnf install -y dnf dnf-plugins-core && \
     dnf -y install epel-release || \
     dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm && \

@@ -1,5 +1,12 @@
 FROM rockylinux/rockylinux:10-minimal AS workspace
 
+LABEL org.opencontainers.image.authors="Marek Kapusta-Ognicki <marek@ognicki.ooo>" \
+      org.opencontainers.image.vendor="Marek Kapusta-Ognicki" \
+      org.opencontainers.image.title="ghcr.io/mwognicki/nodejs-pnpm" \
+      org.opencontainers.image.description="Node.js 22 and pnpm 10 workspace image for reproducible JavaScript package builds." \
+      org.opencontainers.image.url="https://ognicki.ooo" \
+      org.opencontainers.image.documentation="https://ognicki.ooo"
+
 ARG PNPM_VERSION="10.26.0"
 
 RUN microdnf install -y curl && \
