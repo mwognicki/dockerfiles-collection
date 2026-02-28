@@ -28,4 +28,4 @@ jobs:
           context: .
           file: nodejs-pnpm/22-10/Dockerfile
           push: false
-          tags: nodejs-pnpm-22-10:pr-${{ github.sha }}
+          tags: nodejs-pnpm:22-10-pr-${{ github.sha }}

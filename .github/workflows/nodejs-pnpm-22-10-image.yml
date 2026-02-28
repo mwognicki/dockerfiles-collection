@@ -36,8 +36,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ steps.owner.outputs.value }}/nodejs-pnpm-22-10
+          images: ghcr.io/${{ steps.owner.outputs.value }}/nodejs-pnpm
           tags: |
+            type=raw,value=22-10
             type=raw,value=latest
             type=sha
 
