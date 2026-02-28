@@ -7,12 +7,11 @@ WORKDIR /src
 
 COPY src/png-compressor/Cargo.toml src/png-compressor/Cargo.lock ./
 
-RUN mkdir src && \
-    echo 'fn main() {}' > src/main.rs && \
+RUN echo 'fn main() {}' > src/main.rs && \
     cargo build --release --target x86_64-unknown-linux-musl && \
     rm -rf src
 
-COPY src/png-compressor/src ./src
+COPY src/png-compressor/src .
 RUN touch src/main.rs && cargo build --release --target x86_64-unknown-linux-musl
 
 FROM rockylinux/rockylinux:10-minimal
