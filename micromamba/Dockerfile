@@ -1,4 +1,5 @@
-FROM ghcr.io/mwognicki/python:3.12-redquartz
+ARG PYTHON_BASE_TAG=3.12-redquartz
+FROM ghcr.io/mwognicki/python:${PYTHON_BASE_TAG}
 
 LABEL org.opencontainers.image.authors="Marek Kapusta-Ognicki <marek@ognicki.ooo>" \
       org.opencontainers.image.vendor="Marek Kapusta-Ognicki" \
