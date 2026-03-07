@@ -1,0 +1,33 @@
+name: Validate micromamba Dockerfile
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - micromamba/Dockerfile
+      - .github/workflows/micromamba-pr-build.yml
+
+jobs:
+  build-only:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: micromamba/Dockerfile
+          push: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          tags: micromamba:3.12-redquartz-pr-${{ github.sha }}
