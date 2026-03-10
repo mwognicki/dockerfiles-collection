@@ -44,6 +44,3 @@ RUN mkdir -p /home/ciuser/.kube /home/ciuser/.config/helm /home/ciuser/.cache/he
 USER 1001
 
 WORKDIR /workspace
-
-ENTRYPOINT ["helm"]
-CMD ["--help"]
