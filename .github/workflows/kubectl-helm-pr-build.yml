@@ -11,7 +11,7 @@ on:
       - .github/workflows/kubectl-helm-pr-build.yml
 
 jobs:
-  build-only:
+  build-and-test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -28,6 +28,10 @@ jobs:
           context: .
           file: kubectl-helm/Dockerfile
           push: false
+          load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: kubectl-helm:pr-${{ github.sha }}
+
+      - name: Verify kubectl and helm in final image
+        run: docker run --rm kubectl-helm:pr-${{ github.sha }} /bin/sh -lc "kubectl version --client && helm version"
