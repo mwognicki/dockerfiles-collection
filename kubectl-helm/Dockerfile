@@ -38,11 +38,11 @@ COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
 COPY --from=builder /usr/local/bin/helm    /usr/local/bin/helm
 COPY --from=builder /etc/ssl/certs         /etc/ssl/certs
 
-RUN useradd -m -u 1001 -s /bin/sh ciuser \
-    && mkdir -p /home/ciuser/.kube /home/ciuser/.config/helm /home/ciuser/.cache/helm \
-    && chown -R ciuser:ciuser /home/ciuser
+RUN mkdir -p /home/ciuser/.kube /home/ciuser/.config/helm /home/ciuser/.cache/helm \
+ && chown -R 1001:1001 /home/ciuser
 
-USER ciuser
+USER 1001
+
 WORKDIR /workspace
 
 ENTRYPOINT ["helm"]
