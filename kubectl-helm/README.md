@@ -1,6 +1,6 @@
 # kubectl-helm
 
-`ghcr.io/mwognicki/kubectl-helm:latest` is a Rocky Linux-based image with `kubectl` and `helm` for Kubernetes and Helm-driven automation.
+`ghcr.io/mwognicki/kubectl-helm:latest` is an Alma Linux-based image with `kubectl` and `helm` for Kubernetes and Helm-driven automation.
 
 The image uses a multi-stage build, verifies downloaded binaries with checksums, and ships a lean runtime with a non-root `ciuser` plus pre-created Helm and kube config directories.
 

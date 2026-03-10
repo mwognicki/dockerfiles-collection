@@ -17,12 +17,12 @@ RUN curl -fsSL "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kub
 
 # helm — download + checksum verify
 RUN curl -fsSL "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz" \
-      -o /tmp/helm.tar.gz \
+      -o "/tmp/helm-${HELM_VERSION}-linux-amd64.tar.gz" \
     && curl -fsSL "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz.sha256sum" \
       -o /tmp/helm.sha256 \
-    && sha256sum -c /tmp/helm.sha256 \
-    && tar -xz --strip-components=1 -C /usr/local/bin -f /tmp/helm.tar.gz linux-amd64/helm \
-    && chmod +x /usr/local/bin/helm
+    && (cd /tmp && sha256sum -c /tmp/helm.sha256) \
+    && tar -xz -C /tmp -f "/tmp/helm-${HELM_VERSION}-linux-amd64.tar.gz" \
+    && install -m 0755 /tmp/linux-amd64/helm /usr/local/bin/helm
 
 # ── Stage 2: lean runtime image ───────────────────────────────────────────────
 FROM almalinux/10-kitten-micro
