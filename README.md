@@ -10,6 +10,7 @@ Each image lives in its own directory with:
 ## Included images
 
 - [mold-builder](mold-builder/README.md): Rocky Linux 10 image with `mold`, `clang`, and Rust toolchain configured for fast linking.
+- [kubectl-helm](kubectl-helm/README.md): `ghcr.io/mwognicki/kubectl-helm` image with `kubectl` and Helm for Kubernetes automation.
 - [nodejs-pnpm/22-10](nodejs-pnpm/22-10/README.md): Rocky Linux 10 image with Node.js 22 and `pnpm` 10.
 - [nodejs-pnpm-chrome/22-10](nodejs-pnpm-chrome/22-10/README.md): `ghcr.io/mwognicki/nodejs-pnpm-chrome` image tailored for Puppeteer/browser automation.
 - [rust-zigbuild](rust-zigbuild/README.md): `ghcr.io/mwognicki/rust-zigbuild` image with Rust, Zig, and `cargo-zigbuild` for cross-compilation.
