@@ -1,5 +1,5 @@
 # ── Stage 1: download & verify binaries ──────────────────────────────────────
-FROM rockylinux/rockylinux:10-minimal AS builder
+FROM almalinux/10-kitten-minimal AS builder
 
 ARG KUBECTL_VERSION=v1.32.3
 ARG HELM_VERSION=v3.17.2
@@ -25,12 +25,12 @@ RUN curl -fsSL "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz" \
     && chmod +x /usr/local/bin/helm
 
 # ── Stage 2: lean runtime image ───────────────────────────────────────────────
-FROM rockylinux/rockylinux:10-micro
+FROM almalinux/10-kitten-micro
 
 LABEL org.opencontainers.image.authors="Marek Kapusta-Ognicki <marek@ognicki.ooo>" \
       org.opencontainers.image.vendor="Marek Kapusta-Ognicki" \
       org.opencontainers.image.title="ghcr.io/mwognicki/kubectl-helm" \
-      org.opencontainers.image.description="Lean Rocky Linux image with kubectl and Helm for CI/CD and Kubernetes automation workflows." \
+      org.opencontainers.image.description="Lean Alma Linux image with kubectl and Helm for CI/CD and Kubernetes automation workflows." \
       org.opencontainers.image.url="https://ognicki.ooo" \
       org.opencontainers.image.documentation="https://ognicki.ooo"
 
