@@ -38,9 +38,11 @@ COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
 COPY --from=builder /usr/local/bin/helm    /usr/local/bin/helm
 COPY --from=builder /etc/ssl/certs         /etc/ssl/certs
 
-RUN mkdir -p /home/ciuser/.kube /home/ciuser/.config/helm /home/ciuser/.cache/helm \
- && chown -R 1001:1001 /home/ciuser
+RUN echo 'ciuser:x:1001:1001::/home/ciuser:/sbin/nologin' >> /etc/passwd \
+     && echo 'ciuser:x:1001:' >> /etc/group \
+     && mkdir -p /home/ciuser/.kube /home/ciuser/.config/helm /home/ciuser/.cache/helm \
+     && chown -R 1001:1001 /home/ciuser
 
-USER 1001
+USER 1001:1001
 
 WORKDIR /workspace
